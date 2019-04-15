@@ -2,10 +2,13 @@
   <div class="ArtSection">
     <h1 class='artsection-title'>Harvard Art Museum</h1>
     <ul class='art-list'>
-      <li v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
+      <li v-if='artworks.length' v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
         <img v-bind:src='`${artwork.baseimageurl}`' class='artwork'></img>
       </li>
     </ul>
+    <div v-if='!artworks.length' class='loading'>
+      <h2 class='loading-text'>Loading...</h2>
+    </div>
   </div>
 </template>
 
@@ -40,10 +43,20 @@ export default {
 </script>
 
 <style scoped>
-  .artsection-title {
+  .artsection-title,
+  .loading {
     margin:  0px;
     padding: 0px;
     text-align: center;
+  }
+  .artsection-title {
+
+  }
+  .loading {
+    margin-top: 200px;
+  }
+  .loading-text {
+    font-size: 60px;
   }
   .art-list {
     display: flex;
@@ -54,7 +67,8 @@ export default {
     list-style: none;
   }
   .artwork {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
+    border-radius: 25px;
   }
 </style>
