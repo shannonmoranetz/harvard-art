@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import ArtSection from './components/ArtSection.vue'
 
 export default {
