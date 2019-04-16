@@ -5,8 +5,13 @@
       <span class='info-head bullet'>❊</span>
       <p class='image-id'><span class='info-head'>Harvard Image Id:</span> {{this.imageid}}</p>
     </div>
-    <div class='viewlink-button'>
-      <a class='viewlink' target='_blank' :href='`${this.imageUrl}`'>Full Resolution</a>
+    <div class='button-flex'>
+      <div class='navbutton'@click="$emit('close')">
+        <p class='buttontext'>← Go Back</p>
+      </div>
+      <div class='navbutton'>
+        <a class='buttontext' target='_blank' :href='`${this.imageUrl}`'>Full Resolution</a>
+      </div>
     </div>
     <img v-bind:src='`${this.imageUrl}`' class='fullimage'/>
     <p class='copyright'>All images are copyright President and Fellows of Harvard College.</p>
@@ -14,14 +19,16 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
+Vue.component('modal', {
+  template: '#modal-template'
+})
 
 export default {
   name: 'ArtExpanded',
-  props: ['imageUrl', 'date', 'imageid'],
-  methods: {
-  }
+  props: ['imageUrl', 'date', 'imageid']
 }
-
 </script>
 
 <style scoped>
@@ -54,6 +61,11 @@ export default {
     font-size: 24px;
     margin: 10px 1px;
   }
+  .button-flex {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
   .info-head {
     font-size: 30px;
     padding: 0px 20px;
@@ -61,7 +73,7 @@ export default {
   .image-id {
     padding-right: 8px;
   }
-  .viewlink-button {
+  .navbutton {
     padding: 5px 20px;
     margin: 0 auto;
     display: flex;
@@ -78,7 +90,7 @@ export default {
     padding-left: 20px;
     font-size: 30px;
   }
-  .viewlink {
+  .buttontext {
     text-decoration: none;
     color: black;
     font-size: 26px;
@@ -87,12 +99,14 @@ export default {
     font-size: 20px;
     font-family: Seaweed Script;
     margin: 10px 2px;
+    color: #6b5565;
   }
-  .viewlink-button:hover {
+  .navbutton:hover {
     cursor: pointer;
     background-color: #c7ccdd;
   }
-  .viewlink-button:hover a {
+  .navbutton:hover a,
+  .navbutton:hover p {
     color: white;
     text-shadow: 1px 1px black;
   }

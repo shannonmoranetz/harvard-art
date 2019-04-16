@@ -22,3 +22,6 @@ yarn-error.log*
 
 # Api Key
 .apiKey.js
+
+# esLint
+.eslintrc.js
