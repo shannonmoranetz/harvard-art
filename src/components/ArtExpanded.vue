@@ -40,7 +40,7 @@ export default {
     position: fixed;
     z-index: 100;
     top: 20%;
-    right: 34%;
+    right: 33%;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ export default {
     border-radius: 15px;
   }
   .fullimage {
-    max-height: 475px;
+    max-height: 300px;
     max-width: 475px;
     border: 4px solid #6b5565;
   }
