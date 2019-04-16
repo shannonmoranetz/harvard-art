@@ -1,11 +1,12 @@
 <template>
-  <div class="ArtSection">
+  <div class='ArtSection'>
     <h1 class='artsection-title'>Harvard Art Museum</h1>
     <ul class='art-list'>
       <li v-if='artworks.length' v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
-        <img v-bind:src='`${artwork.baseimageurl}`' class='artwork'></img>
+        <img v-bind:src='`${artwork.baseimageurl}`' v-on:click='expandImage()' class='artwork'></img>
       </li>
     </ul>
+    <ArtExpanded v-if='isExpanded' :imageUrl='this.imageUrl'/>
     <div v-if='!artworks.length' class='loading'>
       <h2 class='loading-text'>Loading...</h2>
     </div>
@@ -13,13 +14,19 @@
 </template>
 
 <script>
-import {apiKey} from '../../.apiKey.js'
+import { apiKey } from '../../.apiKey.js'
+import ArtExpanded from './ArtExpanded.vue'
 
 export default {
   name: 'ArtSection',
+  components: {
+    ArtExpanded
+  },
   data() {
     return {
-      artworks: []
+      artworks: [],
+      isExpanded: false,
+      imageUrl: ''
     }
   },
   methods: {
@@ -33,6 +40,10 @@ export default {
         .then(response => response.json())
         .then(result => this.artworks = result.records)
         .catch(error => console.log(error.message))
+    },
+    expandImage ($event) {
+      this.imageUrl = event.target.src
+      this.isExpanded = !this.isExpanded
     }
   },
   mounted() {
@@ -50,7 +61,7 @@ export default {
     text-align: center;
   }
   .artsection-title {
-
+    font-size: 40px;
   }
   .loading {
     margin-top: 200px;
