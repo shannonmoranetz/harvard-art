@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
   .ArtExpanded {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     top: 20%;
     right: 20%;

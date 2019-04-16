@@ -7,8 +7,8 @@
         <p class='generate-text'>New art, please!</p>
       </div>
     </header>
-    <ul class='art-list'>
-      <li v-if='artworks.length' v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
+    <ul v-if='artworks.length' class='art-list'>
+      <li v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
         <img :src='artwork.baseimageurl'
              :imageid='artwork.imageid'
              :date='artwork.date'
@@ -56,7 +56,7 @@ export default {
         .then(result => this.artworks = result.records)
         .catch(error => console.log(error.message))
     },
-    expandImage($event) {
+    expandImage() {
       this.imageUrl = event.target.src
       if(!event.target.attributes.date){
         this.date = 'No date provided.'
@@ -75,6 +75,10 @@ export default {
 </script>
 
 <style scoped>
+  .ArtSection {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
   .active {
     pointer-events: none;
     position: fixed;
@@ -103,6 +107,7 @@ export default {
   }
   .loading {
     margin-top: 200px;
+    text-align: center;
   }
   .loading-text {
     font-size: 60px;
@@ -114,7 +119,6 @@ export default {
     align-items: center;
     justify-content: center;
     padding: 8px;
-
   }
   .generate {
     border: 1px solid black;
@@ -129,13 +133,24 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    position: relative;
   }
   .art-listitem {
     list-style: none;
+    padding: 5px;
+    object-fit: cover;
   }
   .artwork {
     height: 200px;
     width: 200px;
     border-radius: 25px;
+    border: 4px solid #f2f2f2;
+
   }
+  .artwork:hover {
+    transform: scale(1.2, 1.2);
+    box-shadow: 5px 5px 5px #494949;
+  }
+
+
 </style>
