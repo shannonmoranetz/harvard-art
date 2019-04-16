@@ -21,7 +21,13 @@
     <h2 class='loading-text'>Loading...</h2>
   </div>
   <div v-bind:class="{'active':(isExpanded === true)}"></div>
-  <ArtExpanded v-if='isExpanded' :imageUrl='this.imageUrl' :date='this.date' :imageid='this.imageid'/>
+  <ArtExpanded  v-if='isExpanded'
+                :imageUrl='this.imageUrl'
+                :date='this.date'
+                :imageid='this.imageid'
+                @click='isExpanded = true'
+                @close='isExpanded = false'
+  />
 </div>
 
 </template>
