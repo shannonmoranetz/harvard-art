@@ -29,7 +29,6 @@ export default {
   name: 'ArtExpanded',
   props: ['imageUrl', 'date', 'imageid']
 }
-
 </script>
 
 <style scoped>

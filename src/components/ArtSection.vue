@@ -9,27 +9,26 @@
     </header>
     <ul v-if='artworks.length' class='art-list'>
       <li v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
-        <img :src='artwork.baseimageurl'
-             :imageid='artwork.imageid'
-             :date='artwork.date'
-             v-on:click='expandImage()'
-             class='artwork'
+        <img  :src='artwork.baseimageurl'
+              :imageid='artwork.imageid'
+              :date='artwork.date'
+              v-on:click='expandImage()'
+              class='artwork'
         />
       </li>
     </ul>
-  <div v-if='!artworks.length' class='loading'>
-    <h2 class='loading-text'>Loading...</h2>
+    <div v-if='!artworks.length' class='loading'>
+      <h2 class='loading-text'>Loading...</h2>
+    </div>
+    <div v-bind:class="{'active':(isExpanded === true)}"></div>
+    <ArtExpanded  v-if='isExpanded'
+                  :imageUrl='this.imageUrl'
+                  :date='this.date'
+                  :imageid='this.imageid'
+                  @click='isExpanded = true'
+                  @close='isExpanded = false'
+    />
   </div>
-  <div v-bind:class="{'active':(isExpanded === true)}"></div>
-  <ArtExpanded  v-if='isExpanded'
-                :imageUrl='this.imageUrl'
-                :date='this.date'
-                :imageid='this.imageid'
-                @click='isExpanded = true'
-                @close='isExpanded = false'
-  />
-</div>
-
 </template>
 
 <script>
@@ -44,25 +43,30 @@ export default {
   data() {
     return {
       artworks: [],
-      isExpanded: false,
-      imageUrl: '',
       date: '',
-      imageid: 0
+      imageid: 0,
+      imageUrl: '',
+      isExpanded: false
     }
+  },
+  mounted() {
+    this.fetchArt()
   },
   methods: {
     getRandomPage() {
-      let min = Math.ceil(1)
-      let max = Math.floor(9)
-      return Math.floor(Math.random() * (max - min)) + min
+      return Math.floor(Math.random() * (Math.floor(50) - Math.ceil(1))) + Math.ceil(1)
     },
     fetchArt() {
-      fetch(`https://cors-anywhere.herokuapp.com/https://api.harvardartmuseums.org/image?apikey=${apiKey}&size=40&page=${this.getRandomPage()}`)
+      fetch(`https://cors-anywhere.herokuapp.com/https://api.harvardartmuseums.org/image?apikey=${apiKey}&size=30&page=${this.getRandomPage()}`)
         .then(response => response.json())
         .then(result => this.artworks = result.records)
         .catch(error => console.log(error.message))
     },
     expandImage() {
+      this.updateProps()
+      this.isExpanded = !this.isExpanded
+    },
+    updateProps() {
       this.imageUrl = event.target.src
       if(!event.target.attributes.date){
         this.date = 'No date provided.'
@@ -70,14 +74,9 @@ export default {
         this.date = event.target.attributes.date.value
       }
       this.imageid = event.target.attributes.imageid.value
-      this.isExpanded = !this.isExpanded
     }
-  },
-  mounted() {
-    this.fetchArt()
   }
 }
-
 </script>
 
 <style scoped>
@@ -98,7 +97,6 @@ export default {
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.8);
-    -webkit-backdrop-filter: grayscale(1);
     backdrop-filter: grayscale(1);
   }
   .artsection-title,
