@@ -11,11 +11,13 @@
         />
       </li>
     </ul>
-    <ArtExpanded v-if='isExpanded' :imageUrl='this.imageUrl' :date='this.date' :imageid='this.imageid'/>
-    <div v-if='!artworks.length' class='loading'>
-      <h2 class='loading-text'>Loading...</h2>
-    </div>
+  <div v-if='!artworks.length' class='loading'>
+    <h2 class='loading-text'>Loading...</h2>
   </div>
+  <div v-bind:class="{'active':(isExpanded === true)}"></div>
+  <ArtExpanded v-if='isExpanded' :imageUrl='this.imageUrl' :date='this.date' :imageid='this.imageid'/>
+</div>
+
 </template>
 
 <script>
@@ -51,7 +53,7 @@ export default {
     expandImage($event) {
       this.imageUrl = event.target.src
       if(!event.target.attributes.date){
-        this.date = 'no date'
+        this.date = 'No date provided.'
       } else {
         this.date = event.target.attributes.date.value
       }
@@ -67,6 +69,22 @@ export default {
 </script>
 
 <style scoped>
+  .active {
+    pointer-events: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: grayscale(1);
+    backdrop-filter: grayscale(1);
+  }
   .artsection-title,
   .loading {
     margin:  0px;
