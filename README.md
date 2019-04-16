@@ -3,7 +3,7 @@
 ## Turing School of Software and Design: Mod 4 Final Project
 
 ### Project Description
-[Click Here](https://www.google.com) to visit the deployed application.
+[Click Here](https://museum-collection-app.herokuapp.com/) to visit the deployed application.
 
 The Harvard Art Museum Collection is an app that allows users to view classic pieces from a historic school. It currently generates images randomly from the Harvard Art Museum API. Users have the ability to click on any image displayed to view a pop-up containing a large-sized image alongside several details. In this view, the user can also open the full-resolution image if so desired.
 
@@ -15,6 +15,9 @@ The Harvard Art Museum Collection is an app that allows users to view classic pi
 
 ### Setup Guide
 Follow the instructions below to clone the project locally:
+
+[Sign up](https://docs.google.com/forms/d/e/1FAIpQLSfkmEBqH76HLMMiCC-GPPnhcvHC9aJS86E32dOd0Z8MpY2rvQ/viewform) for an API key from the Harvard Art Museum Collection.
+It is recommended to add this to a hidden file (remember to include this in your .gitignore if forking off this repo)!
 
 Clone this project to a local directory:
 
