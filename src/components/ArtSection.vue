@@ -1,8 +1,8 @@
 <template>
   <div class='ArtSection'>
     <header class='header'>
-      <h1 class='artsection-title'>Harvard Art Museum</h1>
-      <h2 class='subtitle'>Enjoy a random selection of Harvard's finest artwork.</h2>
+      <h1 class='artsection-title'>Harvard Art Museum Collection</h1>
+      <h2 class='subtitle'>♕ Enjoy a random selection of Harvard's finest artwork. ♕</h2>
       <div class='generate' v-on:click='fetchArt()'>
         <p class='generate-text'>New art, please!</p>
       </div>
@@ -103,7 +103,12 @@ export default {
     padding: 0px;
   }
   .artsection-title {
-    font-size: 40px;
+    font-size: 60px;
+    font-family: Seaweed Script;
+    color: #6b5565;
+  }
+  .subtitle {
+    color: #aa86a1;
   }
   .loading {
     margin-top: 200px;
@@ -118,39 +123,53 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    font-size: 26px;
   }
   .generate {
-    border: 1px solid black;
-    padding: 8px;
+    border: 4px solid #D4A3C8;
+    border-radius: 12px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    padding: 7px 20px;
   }
   .art-list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     position: relative;
+    padding: 0;
   }
   .art-listitem {
     list-style: none;
     padding: 5px;
-    object-fit: cover;
   }
   .artwork {
     height: 200px;
     width: 200px;
     border-radius: 25px;
-    border: 4px solid #f2f2f2;
-
+    border: 4px solid white;
+    object-fit: cover;
+    filter: saturate(0.25);
   }
   .artwork:hover {
-    transform: scale(1.2, 1.2);
-    box-shadow: 5px 5px 5px #494949;
+    transform: scale(1.1, 1.1);
+    box-shadow: 5px 5px 5px #646361;
+    cursor: pointer;
+    filter: saturate(1.6);
+    filter: contrast(1.5);
+    z-index: 50;
+    border: 4px solid #ffbff0;
   }
-
-
+  .generate:hover {
+    cursor: pointer;
+    background-color: #c7ccdd;
+  }
+  .generate:hover p {
+    color: white;
+    text-shadow: 1px 1px black;
+  }
 </style>
