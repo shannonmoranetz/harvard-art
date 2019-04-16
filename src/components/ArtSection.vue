@@ -1,6 +1,12 @@
 <template>
   <div class='ArtSection'>
-    <h1 class='artsection-title'>Harvard Art Museum</h1>
+    <header class='header'>
+      <h1 class='artsection-title'>Harvard Art Museum</h1>
+      <h2 class='subtitle'>Enjoy a random selection of Harvard's finest artwork.</h2>
+      <div class='generate' v-on:click='fetchArt()'>
+        <p class='generate-text'>New art, please!</p>
+      </div>
+    </header>
     <ul class='art-list'>
       <li v-if='artworks.length' v-for='artwork in artworks' :key='artwork.id' class='art-listitem'>
         <img :src='artwork.baseimageurl'
@@ -86,10 +92,11 @@ export default {
     backdrop-filter: grayscale(1);
   }
   .artsection-title,
-  .loading {
+  .subtitle,
+  .loading,
+  .generate-text {
     margin:  0px;
     padding: 0px;
-    text-align: center;
   }
   .artsection-title {
     font-size: 40px;
@@ -99,6 +106,24 @@ export default {
   }
   .loading-text {
     font-size: 60px;
+  }
+  .header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+  }
+  .generate {
+    border: 1px solid black;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
   }
   .art-list {
     display: flex;
