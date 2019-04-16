@@ -1,6 +1,8 @@
 <template>
   <div class='ArtExpanded'>
-    <img v-bind:src='`${this.imageUrl}`'></img>
+    <p class='date'>{{this.date}}</p>
+    <p class='image-id'>{{this.imageid}}</p>
+    <img v-bind:src='`${this.imageUrl}`' class='expanded-image'/>
   </div>
 </template>
 
@@ -8,8 +10,9 @@
 
 export default {
   name: 'ArtExpanded',
-  props: ['imageUrl'],
+  props: ['imageUrl', 'date', 'imageid'],
   methods: {
+
   }
 }
 
@@ -21,5 +24,6 @@ export default {
     z-index: 100;
     top: 20%;
     right: 20%;
+    background-color: white;
   }
 </style>
