@@ -57,3 +57,5 @@ http://localhost:8080/
 
 ### Project Development Notes:
 This project was assigned as a final exam at the [Turing School of Software and Design](https://www.turing.io). It was created with Vue, and assigned under a short time window to test students' ability to learn a new framework quickly while producing a viable and usable application. The project followed a similar protocol to a take-home code challenge often assigned by employers.
+
+Test commit message.
