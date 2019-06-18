@@ -1,61 +1,35 @@
-# Harvard Art Museum Collection
+# Harvard Art
 
-## Turing School of Software and Design: Mod 4 Final Project
+## Harvard artwork showcase
 
-### Project Description
-[Click Here](https://museum-collection-app.herokuapp.com/) to visit the deployed application.
+* * *
 
-The Harvard Art Museum Collection is an app that allows users to view classic pieces from a historic school. It currently generates images randomly from the Harvard Art Museum API. Users have the ability to click on any image displayed to view a pop-up containing a large-sized image alongside several details. In this view, the user can also open the full-resolution image if so desired.
+### Learn about Harvard's finest art via an interactive card UI.
 
-[Click Here](https://www.harvardartmuseums.org/collections/api) to learn more about the Harvard Art Museum API.
+![Screenshot](https://i.imgur.com/s77iH95.png)
 
-### Current Version:
-![Home](https://i.imgur.com/s77iH95.png)
-![Popup](https://i.imgur.com/eBxL2GP.png)
+### Features
 
-### Setup Guide
-Follow the instructions below to clone the project locally:
+*   Randomized art gathered from Harvard API
+*   Expandable cards containing more information
+*   Full-resolution image links
 
-[Sign up](https://docs.google.com/forms/d/e/1FAIpQLSfkmEBqH76HLMMiCC-GPPnhcvHC9aJS86E32dOd0Z8MpY2rvQ/viewform) for an API key from the Harvard Art Museum Collection.
-It is recommended to add this to a hidden file (remember to include this in your .gitignore if forking off this repo)!
+### Tech Stack
 
-Clone this project to a local directory:
+*   Vue
+*   CSS
 
+### Installation
+
+* Dependencies:
 ```
-$ git clone https://github.com/shannonmoranetz/harvard-art.git
+npm i
 ```
-
-Navigate to the newly created directory:
-
+* Start:
 ```
-cd harvard-art
-```
-
-Install the Vue CLI (Command Line Interface):
-
-```
-npm install -g @vue/cli
+npm run serve
 ```
 
-Install the required NPM modules:
+### Contributors
 
-```
-$ npm install
-```
-
-Start the local server:
-
-```
-$ npm run serve
-```
-
-The app will now be viewable in your browser at:
-
-```
-http://localhost:8080/
-```
-
-### Project Development Notes:
-This project was assigned as a final exam at the [Turing School of Software and Design](https://www.turing.io). It was created with Vue, and assigned under a short time window to test students' ability to learn a new framework quickly while producing a viable and usable application. The project followed a similar protocol to a take-home code challenge often assigned by employers.
-
-Test commit message.
+* [Shannon Moranetz](https://github.com/shannonmoranetz)
